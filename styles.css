@@ -1,0 +1,226 @@
+<style>
+            :root {
+                --main-color: #3168d6;
+                --main-hover-color: #2a59be;
+            }
+            @font-face {
+                font-family: "badge_opensans";
+                src: url("/assets/fonts/Badge_OpenSans.ttf") format("truetype");
+                font-weight: normal;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: "lato_am";
+                src: url("/assets/fonts/Lato_VH.ttf") format("truetype");
+                font-weight: normal;
+                font-style: normal;
+            }
+            html[lang="hy-am"].demo-container {
+                font-family: "lato_am";
+            }
+            html[dir="rtl"].demo-container,
+            html[dir="rtl"].demo-container.demo-left-section,
+            html[dir="rtl"].demo-container.demo-left-section.info-created,
+            html[dir="rtl"].demo-container.demo-right-section.opened-info,
+            html[dir="rtl"].demo-container.demo-right-section {
+                flex-direction: row-reverse;
+            }
+            html[dir="rtl"].demo-container.demo-right-section span {
+                text-align: left;
+            }
+            .demo-container {
+                font-family: "badge_opensans", sans-serif;
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                width: 100%;
+                z-index: 9999;
+                background: #161e33;
+                display: flex;
+                align-items: center;
+                min-height: 48px;
+                padding: 0 24px;
+            }
+            .demo-container.hide {
+                display: none;
+            }
+            .demo-container.demo-right-section {
+                flex: 1;
+                justify-content: flex-end;
+                margin-left: 24px;
+            }
+            .demo-container.demo-left-section.line-divider,
+            .demo-container.demo-right-section.line-divider {
+                min-height: 24px;
+                height: 100%;
+                width: 1px;
+                background: #576180;
+                margin: 6px 24px;
+            }
+            .demo-container.demo-left-section,
+            .demo-container.demo-right-section,
+            .demo-right-section.opened-info,
+            .demo-container.demo-left-section.info-created,
+            .demo-right-section.right-button-section {
+                display: flex;
+                align-items: center;
+            }
+            .demo-right-section.created-btn {
+                text-transform: uppercase;
+                height: 24px;
+                line-height: 24px;
+                padding: 0 13px;
+                font-size: 10px;
+                color: #fff;
+                border-radius: 20px;
+                background: var(--main-color);
+                text-align: center;
+                cursor: pointer;
+                outline: none;
+                border: none;
+                text-decoration: none;
+                white-space: nowrap;
+                transition: background.3s;
+            }
+            .demo-right-section.created-btn:hover {
+                background: var(--main-hover-color);
+            }
+            .demo-right-section.created-btn.loading-spinner {
+                height: 20px;
+                width: 20px;
+                border-left: 2px solid #8c8c85;
+                border-right: 2px solid #8c8c85;
+                border-bottom: 2px solid #d4d4c9;
+                border-top: 2px solid #8c8c85;
+                margin-top: 2px;
+            }
+            .demo-left-section.info-created span {
+                font-size: 12px;
+                line-height: 16px;
+                color: #fff;
+                font-weight: 500;
+                margin-right: 12px;
+            }
+            .demo-left-section.info-created img {
+                width: 85px;
+                margin-bottom: 6px;
+            }
+            .demo-right-section.opened-info {
+                position: relative;
+                -webkit-transition: all.35s;
+                transition: all.35s;
+                -webkit-transform: translate3d(calc(100%-48px), 0, 0);
+                transform: translate3d(calc(100%-24px), 0, 0);
+            }
+            .demo-right-section.opened-info.right-button-section {
+                position: absolute;
+                right: 100%;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            .demo-right-section.opened-info.opened {
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+            .demo-right-section.opened-info.opened.round-arrow {
+                transform: rotate(180deg);
+            }
+            .demo-right-section.opened-info.round-arrow {
+                width: 24px;
+                height: 24px;
+                min-width: 24px;
+                min-height: 24px;
+                background: #3d4766;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: all.35s;
+            }
+            .demo-right-section.opened-info.round-arrow svg {
+                width: 24px;
+                height: 24px;
+                fill: #abb4cc;
+            }
+            .demo-right-section.opened-info span {
+                font-size: 12px;
+                line-height: 16px;
+                color: #fff;
+                font-weight: 500;
+                max-width: 650px;
+            }
+            .demo-right-section.opened-info span a {
+                font-weight: bold;
+                color: #fff;
+                text-decoration: underline;
+            }
+            @media only screen and(max-width:991px) {
+                .demo-container {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    padding: 0 20px 20px;
+                }
+                .demo-container.demo-left-section,
+                .demo-container.demo-right-section {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+                .demo-container.line-divider {
+                    display: none;
+                }
+                .demo-container.demo-right-section {
+                    margin-left: 0;
+                }
+                .demo-container.demo-left-section.info-created {
+                    padding: 13px 0;
+                    max-width: 265px;
+                }
+                .demo-container.demo-right-section.opened-info {
+                    position: inherit;
+                    -webkit-transform: none;
+                    transform: none;
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: max-height.33s ease-out;
+                }
+                .demo-container.demo-right-section.opened-info.opened {
+                    max-height: 120px;
+                    overflow: visible;
+                }
+                .demo-container.demo-right-section.opened-info span {
+                    padding-top: 15px;
+                    padding-bottom: 20px;
+                    opacity: 0;
+                    transition: opacity.55s ease-out;
+                }
+                .demo-container.demo-right-section.opened-info.opened span {
+                    opacity: 1;
+                }
+                .demo-container.demo-right-section.opened-info.round-arrow {
+                    position: absolute;
+                    right: 12px;
+                    top: 12px;
+                    transform: rotate(90deg);
+                }
+                .demo-container.demo-right-section.opened-info.right-button-section {
+                    top: 12px;
+                    right: 70px;
+                    transform: none;
+                }
+                .demo-container.demo-right-section.opened-info.opened.round-arrow {
+                    transform: rotate(270deg);
+                }
+                html[lang="hy-am"].demo-container {
+                    font-family: "lato_am";
+                }
+                html[dir="rtl"].demo-container,
+                html[dir="rtl"].demo-container.demo-left-section {
+                    flex-direction: column !important;
+                    align-items: flex-end !important;
+                }
+                html[dir="rtl"].demo-container.demo-right-section span {
+                    text-align: left;
+                }
+            }
+        </style>
